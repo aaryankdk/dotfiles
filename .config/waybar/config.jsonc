@@ -1,0 +1,22 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+
+    "include": ["~/.config/waybar/modules.jsonc"],    
+
+    "modules-left": [
+	"custom/power",
+        "hyprland/workspaces",
+	"custom/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+	"network",
+        "group/pill",
+        "battery"
+    ]
+}

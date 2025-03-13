@@ -1,0 +1,69 @@
+{	 
+	 "hyprland/workspaces": {
+         "format": "{icon}",
+         "format-icons": {
+             "active": "",
+             "default": ""
+         }
+     },
+    "custom/window": {
+    	"exec": "hyprctl activewindow -j | jq -r 'if .class then .class else \"\" end' | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}'",
+   	"restart-interval": 0
+    },
+    "group/pill": {
+	"orientation": "inherit",
+	"modules": ["pulseaudio","cpu","memory"]
+    },
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "tooltip-format": "<big>{:%d %b, %Y}</big>",
+    },
+    "cpu": {
+        "format": "    {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "    {}%"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-icons": ["  ", "  ", "  ", "  ", "  "]
+    },
+    "network": {
+        "format-wifi": " ",
+        "tooltip-format": "{essid}",
+        "format-disconnected": "⚠",
+    },
+    "pulseaudio": {
+        "format": "{icon}   {volume}%",
+        "format-bluetooth": " {volume}%",
+        "format-bluetooth-muted": " ",
+        "format-muted": " ",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "default": [" ", " ", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/power": {
+        "format" : "󰣇",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml",
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+    }
+}
